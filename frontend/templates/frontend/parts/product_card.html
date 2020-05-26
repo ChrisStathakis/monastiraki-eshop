@@ -1,0 +1,45 @@
+{% load static %}
+<div class="item">
+    <div class="product_wrap">
+        <div class="product_img">
+            <a href="{{ product.get_absolute_url }}">
+                {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.title }}">
+                {% else %} <img src="{% static 'frontend/my_assets/logo.png' %}" alt="{{ product.title }}" >
+                {% endif %}
+                {% if product.image %}<img class="product_hover_img" src="{{ product.image.url }}" alt="{{ product.title }}">
+                {% else %} <img class="product_hover_img" src="{% static 'frontend/my_assets/logo.png' %}" alt="{{ product.title }}" >
+                {% endif %}
+
+            </a>
+            {% comment %}
+            <div class="product_action_box">
+                <ul class="list_none pr_action_btn">
+                    <li class="add-to-cart"><a href="#">
+                        <i class="icon-basket-loaded"></i> Προσθηκη στο καλάθι</a>
+                    </li>
+                    <li><a href="//bestwebcreator.com/shopwise/demo/shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a>
+                    </li>
+                    <li><a href="//bestwebcreator.com/shopwise/demo/shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                    <li><a href="#"><i class="icon-heart"></i></a></li>
+                </ul>
+            </div>
+            {% endcomment %}
+        </div>
+        <div class="product_info">
+            <h6 class="product_title"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h6>
+            <p>{{ product.category.first }}</p>
+            <div class="product_price">
+                <span class="price">{{ product.tag_final_price }}</span>
+                {% if product.is_offer %}<del>{{ product.price}}</del> {% endif %}
+                {% if product.is_offer %}
+                <div class="on_sale">
+                    <span>25% Off</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

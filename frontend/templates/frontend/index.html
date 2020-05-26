@@ -1,0 +1,348 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+<head>
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="Anil z" name="author">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shopwise is Powerful features and You Can Use The Perfect Build this Template For Any eCommerce Website. The template is built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods.">
+<meta name="keywords" content="ecommerce, electronics store, Fashion store, furniture store,  bootstrap 4, clean, minimal, modern, online store, responsive, retail, shopping, ecommerce store">
+
+<!-- SITE TITLE -->
+<title>Μικρο Μοναστηρακι | {{ page_title }}</title>
+    {% include 'frontend/include/head.html' %}
+</head>
+
+<body>
+
+<!-- Home Popup Section -->
+<div class="modal fade subscribe_popup" id="onload-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="ion-ios-close-empty"></i></span>
+                </button>
+                <div class="row no-gutters">
+                    <div class="col-sm-7">
+                        <div class="popup_content text-left">
+                            <div class="popup-text">
+                                <div class="heading_s1">
+                                    <h3>Subscribe Newsletter and Get 25% Discount!</h3>
+                                </div>
+                                <p>Subscribe to the newsletter to receive updates about new products.</p>
+                            </div>
+                            <form method="post">
+                            	<div class="form-group">
+                                	<input name="email" required type="email" class="form-control" placeholder="Enter Your Email">
+                                </div>
+                                <div class="form-group">
+                                	<button class="btn btn-fill-out btn-block text-uppercase" title="Subscribe" type="submit">Subscribe</button>
+                                </div>
+                            </form>
+                            <div class="chek-form">
+                                <div class="custome-checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
+                                    <label class="form-check-label" for="exampleCheckbox3"><span>Don't show this popup again!</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                    	<div class="background_bg h-100" data-img-src="assets/images/popup_img3.jpg"></div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    </div>
+</div>
+
+
+{% include 'frontend/include/navbar.html' %}
+{% block content %}
+<!-- START SECTION BANNER -->
+<div class="mt-4 staggered-animation-wrap">
+	<div class="custom-container">
+    	<div class="row">
+        	<div class="col-lg-7 offset-lg-3">
+            	<div class="banner_section shop_el_slider">
+                    <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for banner in big_banners %}
+                                {% if forloop.first %}
+                                    <div class="carousel-item active background_bg" data-img-src="{{ banner.image.url }}">
+                                        <div class="banner_slide_content banner_content_inner">
+                                            <div class="col-lg-7 col-10">
+                                                <div class="banner_content3 overflow-hidden">
+                                                    <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
+                                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">{{ banner.title }}</h2>
+
+                                                    <a class="btn btn-fill-out btn-radius staggered-animation text-uppercase" href="{{ banner.image }}" data-animation="slideInLeft" data-animation-delay="1.5s">Αγορα τωρα</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="carousel-item background_bg" data-img-src="{{ banner.image.url }}">
+                                        <div class="banner_slide_content banner_content_inner">
+                                            <div class="col-lg-7 col-10">
+                                            <div class="banner_content3 overflow-hidden">
+                                                <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
+                                                <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">{{ banner.title }}</h2>
+                                                <a class="btn btn-fill-out btn-radius staggered-animation text-uppercase" href="{{ banner.image }}" data-animation="slideInLeft" data-animation-delay="1.5s">Αγορα τωρα</a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                        <ol class="carousel-indicators indicators_style3">
+                            {% for banner in big_banners %}
+                                {% if forloop.first %}
+                                    <li data-target="#carouselExampleControls" data-slide-to="{{ forloop.counter }}" class="active"></li>
+                                {% else %}
+                                    <li data-target="#carouselExampleControls" data-slide-to="{{ forloop.counter }}"></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 d-none d-lg-block">
+                {% for banner in small_banners %}
+                    <div class="shop_banner2 el_banner1">
+                	<a href="#" class="hover_effect1">
+                    	<div class="el_title text_white">
+                        	<h6>{{ banner.title}}</h6>
+                            <span>25% off</span>
+                        </div>
+                        <div class="el_img">
+                			<img src="{{ banner.image.url }}" alt="shop_banner_img6">
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION BANNER -->
+
+<!-- END MAIN CONTENT -->
+<div class="main_content">
+
+<!-- START SECTION SHOP -->
+<div class="section small_pt pb-0">
+	<div class="custom-container">
+    	<div class="row">
+        	<div class="col-xl-3 d-none d-xl-block">
+            	<div class="sale-banner">
+                	<a class="hover_effect1" href="#">
+                		<img src="{% static 'frontend/assets/images/shop_banner_img6.jpg' %}" alt="shop_banner_img6">
+                    </a>
+                </div>
+            </div>
+        	<div class="col-xl-9">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="heading_tab_header">
+                            <div class="heading_s2">
+                                <h4>Τα Προϊόντα μας</h4>
+                            </div>
+                            <div class="tab-style2">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabmenubar" aria-expanded="false">
+                                    <span class="ion-android-menu"></span>
+                                </button>
+                                <ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="arrival-tab" data-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">Νεες Παραλαβες</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="sellers-tab" data-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="featured-tab" data-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Προτεινόμενα</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="special-tab" data-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Προσφορες</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab_slider">
+                            <div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
+                                <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1"  data-margin="20" >
+                                    {%  for product in new_products %}
+                                        {% include 'frontend/parts/product_card.html' %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
+                                <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+                                <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
+                                <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION SHOP -->
+
+<!-- START SECTION BANNER -->
+<div class="section pb_20 small_pt">
+	<div class="custom-container">
+    	<div class="row">
+        	<div class="col-md-4">
+            	<div class="sale-banner mb-3 mb-md-4">
+                	<a class="hover_effect1" href="#">
+                		<img src="{% static 'frontend/' %}assets/images/shop_banner_img7.jpg" alt="shop_banner_img7">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+            	<div class="sale-banner mb-3 mb-md-4">
+                	<a class="hover_effect1" href="#">
+                		<img src="{% static 'frontend/' %}assets/images/shop_banner_img8.jpg" alt="shop_banner_img8">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+            	<div class="sale-banner mb-3 mb-md-4">
+                	<a class="hover_effect1" href="#">
+                		<img src="{% static 'frontend/' %}assets/images/shop_banner_img9.jpg" alt="shop_banner_img9">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION BANNER -->
+
+
+
+<!-- START SECTION SHOP -->
+<div class="section small_pt small_pb">
+	<div class="custom-container">
+    	<div class="row">
+        	<div class="col-xl-3 d-none d-xl-block">
+            	<div class="sale-banner">
+                	<a class="hover_effect1" href="#">
+                		<img src="assets/images/shop_banner_img10.jpg" alt="shop_banner_img10">
+                    </a>
+                </div>
+            </div>
+        	<div class="col-xl-9">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="heading_tab_header">
+                            <div class="heading_s2">
+                                <h4>Προσφορες</h4>
+                            </div>
+                            <div class="view_all">
+                            	<a href="#" class="text_default"><i class="linearicons-power"></i> <span>View All</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
+                            {% for product in new_products %}
+                                {% include 'frontend/parts/product_card.html' %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION SHOP -->
+
+<!-- START SECTION CLIENT LOGO -->
+<div class="section pt-0 small_pb">
+	<div class="custom-container">
+    	<div class="row">
+			<div class="col-md-12">
+            	<div class="heading_tab_header">
+                    <div class="heading_s2">
+                        <h4> Brands</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-12">
+            	<div class="client_logo carousel_slider owl-carousel owl-theme nav_style3" data-dots="false" data-nav="true" data-margin="30" data-loop="true" data-autoplay="true" data-responsive='{"0":{"items": "2"}, "480":{"items": "3"}, "767":{"items": "4"}, "991":{"items": "5"}, "1199":{"items": "6"}}'>
+                	{% for brand in brands %}
+                    <div class="item">
+                    	<div class="cl_logo">
+                        	<img src="{{ brand.image.url}}" alt="cl_logo"/>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION CLIENT LOGO -->
+
+
+
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
+<div class="section bg_default small_pt small_pb">
+	<div class="custom-container">
+    	<div class="row align-items-center">
+            <div class="col-md-6">
+            	<div class="newsletter_text text_white">
+                    <h3>Εγγραφειτε στο Newsletter  μας</h3>
+                    <p>Για να δείτε πρώτοι τις προσφορές μας και τα νέα μας προϊοντα</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="newsletter_form2 rounded_input">
+                    <form method="post" action="{% url 'newsletter:validate_newsletter' %}">
+                        <input type="text" required="" class="form-control" placeholder="Enter Email Address">
+                        <button type="submit" class="btn btn-dark btn-radius" name="submit" value="Submit">Εγγραφή</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
+
+</div>
+<!-- END MAIN CONTENT -->
+{% endblock %}
+{% include 'frontend/include/footer.html' %}
+
+<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+
+{% include 'frontend/include/js.html' %}
+
+</body>
+</html>
